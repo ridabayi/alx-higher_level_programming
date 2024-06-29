@@ -1,3 +1,3 @@
--- Script to print full description of table first_table
+-- Script to print full description of table first_t
 
-SHOW CREATE TABLE 'first_table';
+SHOW CREATE TABLE `first_table`;
