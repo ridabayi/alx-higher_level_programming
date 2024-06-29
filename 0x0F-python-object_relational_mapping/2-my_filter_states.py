@@ -13,7 +13,7 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=mysql_username, passwd=mysql_password, db=database_name)
     cursor = db.cursor()
 
-    # Construct SQL query using format to avoid SQL injection risks
+    # Construct SQL query with format to avoid SQL injection risks
     query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
 
     # Execute SQL query
