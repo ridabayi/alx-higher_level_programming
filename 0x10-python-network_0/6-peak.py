@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""Finds a peak in a list of unsorted integers"""
+
+
+
 def find_peak(arr):
     """Find a peak element in the list of unsorted integers."""
     if not arr:
