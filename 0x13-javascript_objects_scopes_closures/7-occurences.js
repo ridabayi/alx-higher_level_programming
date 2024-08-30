@@ -1,9 +1,10 @@
 #!/usr/bin/node
-
 exports.nbOccurences = function (list, searchElement) {
-  // Use filter to create a new array with elements that match searchElement
-  const occurrences = list.filter(element => element === searchElement);
-  
-  // The length of the occurrences array gives the number of matches
-  return occurrences.length;
+  let nOccurrences = 0;
+  for (let i = 0; i < list.length; i++) {
+    if (searchElement === list[i]) {
+      nOccurrences++;
+    }
+  }
+  return nOccurrences;
 };
