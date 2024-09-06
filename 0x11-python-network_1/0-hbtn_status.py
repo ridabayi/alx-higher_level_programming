@@ -1,10 +1,16 @@
 #!/usr/bin/python3
-"""fetches https://intranet.hbtn.io/status using the urllib package
-"""
+
 import urllib.request
-with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
-    data = response.read()
-    print("Body response:")
-    print("	- type:", type(data))
-    print("	- content:", data)
-    print("	- utf8 content:", data.decode('utf-8'))
+
+def fetch_status(url):
+    """Fetches and displays the status of the given URL."""
+    with urllib.request.urlopen(url) as response:
+        body = response.read().decode('utf-8')
+        print("Body response:")
+        print(f"    - type: {type(body)}")
+        print(f"    - content: {body}")
+        print(f"    - utf8 content: {body}")
+
+if __name__ == "__main__":
+    url = "https://intranet.hbtn.io/status"
+    fetch_status(url)
