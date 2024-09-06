@@ -1,16 +1,19 @@
 #!/usr/bin/python3
+import requests
 
-import urllib.request
-
-def fetch_status(url):
-    """Fetches and displays the status of the given URL."""
-    with urllib.request.urlopen(url) as response:
-        body = response.read().decode('utf-8')
-        print("Body response:")
-        print(f"    - type: {type(body)}")
-        print(f"    - content: {body}")
-        print(f"    - utf8 content: {body}")
+def fetch_github_user(username):
+    url = f"https://api.github.com/users/{username}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = response.json()
+        print("User Data:")
+        print(f"\t- Login: {user_data.get('login')}")
+        print(f"\t- ID: {user_data.get('id')}")
+        print(f"\t- Name: {user_data.get('name')}")
+        print(f"\t- Public Repos: {user_data.get('public_repos')}")
+    else:
+        print(f"Failed to retrieve data: {response.status_code}")
 
 if __name__ == "__main__":
-    url = "https://intranet.hbtn.io/status"
-    fetch_status(url)
+    username = "ridabayi"  
+    fetch_github_user(username)
