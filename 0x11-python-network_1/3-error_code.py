@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 """
-Fetches the content of a URL and prints the body of the response, decoded in UTF-8.
-"""
+Fetches and prints the content of a URL.
 
-import urllib.request
+Usage: ./3-handle_error.py <URL>
+  - Catches and displays HTTP error codes.
+"""
 import sys
+import urllib.error
+import urllib.request
 
 if __name__ == "__main__":
+    url = sys.argv[1]
+
+    req = urllib.request.Request(url)
     try:
-        with urllib.request.urlopen(sys.argv[1]) as response:
-            print(response.read().decode("utf-8"))
+        with urllib.request.urlopen(req) as res:
+            print(res.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
-        print("Error code: {}".format(error.code))
-    except:
-        pass
+        print(f"Error code: {error.code}")
